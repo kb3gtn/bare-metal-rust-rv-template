@@ -1,8 +1,8 @@
 [package]
-name = "bare-metal-rust-on-riscv"
+name = "myproj"
 version = "0.1.0"
 edition = "2021"
-authors = ["Lowie Deferme"]
+authors = ["Peter Fetterer"]
 license-file = "LICENSE"
 readme = "README.md"
 

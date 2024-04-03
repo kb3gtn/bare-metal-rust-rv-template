@@ -20,7 +20,7 @@ extern "C" fn main() -> () {
     // Example: Create a counter peripheral with base address 0x8000_0000
     let mut counter: Counter<0x8000_0000> = Counter::new();
     counter.set_control_reg(0xaaaa);
-    let c_s = counter.get_status_reg();
-    let c_c = counter.get_control_reg();
-    let c_v = counter.get_value();
+    let _c_s = counter.get_status_reg();
+    let _c_c = counter.get_control_reg();
+    let _c_v = counter.get_value();
 }
