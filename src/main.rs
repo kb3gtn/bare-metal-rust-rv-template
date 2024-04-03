@@ -16,6 +16,7 @@ global_asm!(include_str!("init.s"));
 /// Main program function
 #[no_mangle]
 extern "C" fn main() -> () {
+    #[allow(unused_mut)]
     let mut rr : u32;
     // create io register accessor at base 0x8000000 1024 words long
     let ioregs = ioregisters::IORegisters::new(0x8000000, 1024);

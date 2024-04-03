@@ -6,9 +6,5 @@ authors = ["Peter Fetterer"]
 license-file = "LICENSE"
 readme = "README.md"
 
-[unstable]
-build-std = ["core"]
-build-std-features = ["panic_immediate_abort"]
-
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [dependencies]
