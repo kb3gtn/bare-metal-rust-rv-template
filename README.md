@@ -28,6 +28,5 @@ for basic riscv32i cpu support:
 You may need to install a risc-v toolchain for linker. 
 Risc-v community has toolchains for multiple different OSes.
 
-Build optimization and linker commands can be found under
-See .cargo/config.toml
+Build optimization and linker commands can be found under .cargo/config.toml
 
