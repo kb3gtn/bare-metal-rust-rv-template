@@ -1,6 +1,6 @@
 # Rust Bare Metal starting Template
 Based on work from https://github.com/defermelowie/bare-metal-rust-on-riscv    
-This is a starting template for building bare metal minimal application for risc-v rv32 cpus.
+This is a starting template for building bare metal minimal application for risc-v rv32 cpus.    
 MIT LICENSE
 
 # How to use this template
