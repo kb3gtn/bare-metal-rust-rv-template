@@ -3,24 +3,38 @@
 
 use core::{arch::global_asm, panic::PanicInfo};
 
-mod counter;
-use counter::Counter;
-
-global_asm!(include_str!("init.s"));
-
-/// A panic handler is required in Rust, this is probably the most basic one possible
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {
     loop {}
 }
 
+mod ioregisters;
+//use IORegisters::IORegisters;
+
+global_asm!(include_str!("init.s"));
+
 /// Main program function
 #[no_mangle]
 extern "C" fn main() -> () {
-    // Example: Create a counter peripheral with base address 0x8000_0000
-    let mut counter: Counter<0x8000_0000> = Counter::new();
-    counter.set_control_reg(0xaaaa);
-    let _c_s = counter.get_status_reg();
-    let _c_c = counter.get_control_reg();
-    let _c_v = counter.get_value();
+    let mut rr : u32;
+    // create io register accessor at base 0x8000000 1024 words long
+    let ioregs = ioregisters::IORegisters::new(0x8000000, 1024);
+    match ioregs.write(0, 0xFFFFFFFF ) {
+        Ok(()) => (),
+        _ => panic!(),
+    };
+    match ioregs.write(1, 0xFFFFFFFF ) {
+        Ok(()) => (),
+        _ => panic!(),
+    };
+    rr = match ioregs.read(0) {
+        Ok(v) => v,
+        _ => panic!(),
+    };
+    match ioregs.write(1, rr) {
+        Ok(()) => (),
+        _ => panic!(),
+    };
+    loop {}
 }
+
