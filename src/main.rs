@@ -9,15 +9,16 @@ fn panic(_info: &PanicInfo) -> ! {
 }
 
 mod ioregisters;
-//use IORegisters::IORegisters;
 
+// processor initialization assembly
+// zero registers, setup stack pointer, call main()
 global_asm!(include_str!("init.s"));
 
 /// Main program function
 #[no_mangle]
 extern "C" fn main() -> () {
     #[allow(unused_mut)]
-    let mut rr : u32;
+    let mut _rr : u32;
     // create io register accessor at base 0x8000000 1024 words long
     let ioregs = ioregisters::IORegisters::new(0x8000000, 1024);
     match ioregs.write(0, 0xFFFFFFFF ) {
@@ -28,11 +29,11 @@ extern "C" fn main() -> () {
         Ok(()) => (),
         _ => panic!(),
     };
-    rr = match ioregs.read(0) {
+    _rr = match ioregs.read(0) {
         Ok(v) => v,
         _ => panic!(),
     };
-    match ioregs.write(1, rr) {
+    match ioregs.write(1, 0xDEADBEEF) {
         Ok(()) => (),
         _ => panic!(),
     };

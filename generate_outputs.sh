@@ -20,7 +20,7 @@ echo "running cargo build on project"
 cargo build
 # Extract program from elf output and disassemble to asm dump
 echo "Generating assembly listing"
-cargo objdump --release -- --disassemble > ${prjname}.asm
+cargo objdump --release -- -d -M "no-aliases" > ${prjname}.asm
 # Extract binary blob from elf output.
 echo "Generating raw binary for myproj."
 cargo objcopy --release -- -O binary ${prjname}.bin
