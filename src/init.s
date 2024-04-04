@@ -1,6 +1,8 @@
 .section .init
 .global main
 
+.global _stack_ptr
+
 init:
     /* zero-initialize all registers */
     addi x1, zero, 0
@@ -36,8 +38,9 @@ init:
     addi x31, zero, 0
 
     /* set stack pointer */
-    lui sp, %hi(16*1024)
-    addi sp, sp, %lo(16*1024)
+    /* should be set to top of RAM */
+    lui sp, %hi(_stack_ptr)
+    addi sp, sp, %lo(_stack_ptr)
 
     /* call main */
     jal ra, main

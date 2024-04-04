@@ -10,6 +10,8 @@ MEMORY {
     RAM : ORIGIN = 0x00100000, LENGTH =  256K   /* 1K = 1 KiBi = 1024 bytes */
 }
 
+_stack_ptr = 0x00100000+(256*1024);
+
 /* Define sections */
 SECTIONS {
     . = ORIGIN(ROM);
