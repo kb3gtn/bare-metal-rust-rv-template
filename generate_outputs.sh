@@ -19,7 +19,7 @@ fi
 echo "running cargo build on project"
 cargo build
 # Extract program from elf output and disassemble to asm dump
-echo "Generating blinky assembly listing blinky.asm"
+echo "Generating assembly listing"
 cargo objdump --release -- --disassemble > ${prjname}.asm
 # Extract binary blob from elf output.
 echo "Generating raw binary for myproj."
