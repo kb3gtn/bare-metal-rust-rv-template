@@ -23,7 +23,10 @@ The default linker script (memory.ld) assumes a 256K memory only system, with bo
 will need to install riscv toolchain support:    
 
 for basic riscv32i cpu support:
-> rustup target add riscv32i-unknown-linux-gnu
+
+> rustup target add riscv32i-unknown-none-elf
+> cargo install cargo-binutils
+> rustup component add llvm-tools
 
 You may need to install a risc-v toolchain for linker. 
 Risc-v community has toolchains for multiple different OSes.
